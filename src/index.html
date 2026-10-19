@@ -2,10 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Capacitor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>WebSocket Pastebin</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
 <body>
-    <h1>Hello Capacitor!</h1>
+    <header class="app-bar">WebSocket Pastebin</header>
+
+    <main id="paste-view" class="view">
+        <div class="paste-row">
+            <input id="paste" type="text" placeholder="Paste here..." autocomplete="off" aria-label="Paste text">
+            <button id="send" type="button">Send</button>
+        </div>
+
+        <div id="output" class="output" aria-live="polite"></div>
+
+        <footer class="bottom">
+            <div class="bottom-row">
+                <span id="status" class="status">Connection: CLOSED</span>
+                <button id="open-settings" type="button">Settings</button>
+            </div>
+            <div class="bottom-row end">
+                <button id="reconnect" type="button" class="grey" disabled>Reconnect</button>
+            </div>
+        </footer>
+    </main>
+
+    <main id="settings-view" class="view" hidden>
+        <h2>Settings</h2>
+        <p id="settings-message" class="message" hidden></p>
+
+        <form id="login-form">
+            <label for="username">Username</label>
+            <input id="username" type="text" autocomplete="username" autocapitalize="none" required>
+            <label for="password">Password</label>
+            <input id="password" type="password" autocomplete="current-password" required>
+            <button id="login" type="submit">Log in</button>
+        </form>
+
+        <p id="logged-in" class="logged-in" hidden></p>
+
+        <footer class="bottom">
+            <div class="bottom-row end">
+                <button id="logout" type="button" class="grey">Log out</button>
+                <button id="close-settings" type="button">Back</button>
+            </div>
+        </footer>
+    </main>
 </body>
 </html>
